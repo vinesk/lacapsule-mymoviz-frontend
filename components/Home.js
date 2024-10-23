@@ -38,7 +38,7 @@ function Home() {
 
   // Movies list
   useEffect(() => {
-    fetch("https://lacapsule-mymoviz-backend.vercel.app/movies")
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/movies`)
       .then((response) => response.json())
       .then((data) => {
         const formatedData = data.movies.map((movie) => {

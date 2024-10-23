@@ -38,8 +38,13 @@ function Home() {
 
   // Movies list
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/movies`)
-      .then((response) => response.json())
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}movies`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then((data) => {
         const formatedData = data.movies.map((movie) => {
           const poster = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
@@ -57,6 +62,9 @@ function Home() {
           };
         });
         setMoviesData(formatedData);
+      })
+      .catch((error) => {
+        console.error("Erreur lors de la récupération des films:", error);
       });
   }, []);
 

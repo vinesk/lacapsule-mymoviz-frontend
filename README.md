@@ -16,7 +16,7 @@
 ## Tech Stack
 
 **Frontend**: React, Next.js, Tailwind CSS  
-**Backend**: Node.js, Express
+**Backend**: Node.js, Express  
 **API**: The Movie Database (TMDB)  
 **Deployment**: Vercel
 
